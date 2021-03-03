@@ -1,0 +1,26 @@
+{
+  "name": "leetcode-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyunbo/LeetCode-JavaScript.git"
+  },
+  "author": "Yunbo Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wyunbo/LeetCode-JavaScript/issues"
+  },
+  "homepage": "https://github.com/wyunbo/LeetCode-JavaScript#readme",
+  "devDependencies": {
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1"
+  },
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}
