@@ -6,6 +6,6 @@ test('Invert Binary Tree', () => {
     const root = deserializeTree(testCase[0]);
     const expected = testCase[1];
     const received = serializeTree(invertTree(root));
-    expect(received).toStrictEqual(expected);
+    expect(received).toEqual(expected);
   });
 });
