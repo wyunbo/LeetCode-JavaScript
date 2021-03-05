@@ -119,4 +119,6 @@ const searchTreeNode = (root, val) => {
   return searchTreeNode(root.left, val) || searchTreeNode(root.right, val);
 };
 
-export { serializeTree, deserializeTree, searchTreeNode, cloneTree };
+const NULL = -1 << 63;
+
+export { serializeTree, deserializeTree, searchTreeNode, cloneTree, NULL };
