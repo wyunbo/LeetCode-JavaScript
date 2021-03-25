@@ -12,7 +12,6 @@ const parse = (str) => {
     return o;
   }, {});
 };
-
 const deepSet = (o, path, value) => {
   let i = 0;
   for (; i < path.length - 1; i++) {
@@ -27,5 +26,4 @@ const deepSet = (o, path, value) => {
   }
   o[path[i]] = decodeURIComponent(value);
 };
-
 export default parse;
