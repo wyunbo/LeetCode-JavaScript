@@ -19,7 +19,7 @@
     context = getDefaultContext(context);
     let symbol = Symbol('fn');
     context[symbol] = this;
-    context[symbol](args);
+    context[symbol](...args);
     delete context[symbol];
   }
 
@@ -27,9 +27,29 @@
     return (...args) => this.call2(context, ...outerArgs, ...args);
   }
 
+  // 支持new
+  Object.create = function (proto) {
+    function F() {}
+    F.prototype = proto;
+    return new F();
+  };
+  function bind3(context, ...outerArgs) {
+    var thatFunc = this,
+      fBound = function (...innerArgs) {
+        return thatFunc.call(
+          this instanceof thatFunc ? this : context,
+          ...outerArgs,
+          ...innerArgs
+        );
+      };
+    fBound.prototype = Object.create(thatFunc.prototype);
+    return fBound;
+  }
+
   prototype.call2 = call2;
   prototype.apply2 = apply2;
   prototype.bind2 = bind2;
+  prototype.bind3 = bind3;
 })(Function.prototype);
 
 function getInfo(age, home) {
@@ -37,7 +57,19 @@ function getInfo(age, home) {
 }
 let obj = { name: 'LeBron' };
 getInfo.call2(obj, 36, 'Cleveland');
-getInfo.apply(obj, [36, 'Cleveland']);
-
-let bindInfo = getInfo.bind(obj, 36);
+getInfo.apply2(obj, [36, 'Cleveland']);
+let bindInfo = getInfo.bind2(obj, 36);
 bindInfo('Cleveland');
+
+let bindInf3 = getInfo.bind3(obj, 36);
+bindInf3('Cleveland');
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.getInfo = function (age, home) {
+  console.log(this.name, age, home);
+};
+
+let bindInfo3 = Person.bind3(null, 'LeBron');
+
+new bindInfo3().getInfo(36, 'Cleveland');
