@@ -28,3 +28,9 @@ function _new(clazz, ...args) {
   }
   return _this;
 }
+
+// "原型"继承的几种方式:
+// Girl.prototype.__proto__ = EventEmitter.prototype; // mdn
+// Object.setPrototypeof(Girl.prototype,EventEmitter.prototype)
+// Girl.prototype = Object.create(EventEmitter.prototype);
+// extends
