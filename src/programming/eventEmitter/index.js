@@ -1,7 +1,7 @@
 // commonjs规范 内置模块  第三方模块 文件模块
 // (fs path events) vm
 // 发布订阅模式 node内置了这个模块
-const EventEmitter = require('events'); // 事件触发器
+const EventEmitter = require('./events'); // 事件触发器
 const util = require('util'); // 内置模块
 function Girl() {}
 util.inherits(Girl, EventEmitter);
@@ -40,8 +40,8 @@ girl.on('女生失恋', () => {
 // on emit
 // girl.off('女生失恋',eat);
 
-// girl.emit('女生失恋',1,2,3,4);
-// girl.emit('女生失恋',1,2,3,4);
+girl.emit('女生失恋', 1, 2, 3, 4);
+girl.emit('女生失恋', 1, 2, 3, 4);
 
 // on / emit / once / off / newListener
 // 发布订阅解决了什么问题， 代码解耦 （解耦代码）
