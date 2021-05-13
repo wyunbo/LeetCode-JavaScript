@@ -41,7 +41,7 @@
  * @param {TreeNode} t
  * @return {boolean}
  */
-const isSubTree = (s, t) => {
+const isSubtree = (s, t) => {
   const stack = [s];
   while (stack.length) {
     const node = stack.pop();
@@ -64,5 +64,5 @@ const isSameTree = (s, t) => {
   if (!s || !t || s.val !== t.val) {
     return false;
   }
-  return isSameTree(node.left, t.left) && isSameTree(node.right, t.right);
+  return isSameTree(s.left, t.left) && isSameTree(s.right, t.right);
 };
