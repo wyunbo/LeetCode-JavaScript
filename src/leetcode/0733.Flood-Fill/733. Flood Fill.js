@@ -14,11 +14,13 @@ const floodFill = (image, sr, sc, newColor) => {
     if (i < 0 || i >= m || j < 0 || j >= n || image[i][j] !== oldColor) {
       return;
     }
+    image[i][j] = newColor;
     fill(i - 1, j);
     fill(i + 1, j);
     fill(i, j - 1);
     fill(i, j + 1);
   };
+  fill(sr, sc);
   return image;
 };
 
